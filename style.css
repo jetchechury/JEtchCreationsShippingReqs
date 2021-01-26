@@ -1,0 +1,43 @@
+
+.blank-box {
+    background-color: #ffffff;
+    color: white;
+    text-align: center;
+    margin: 2px;
+}
+
+.item {
+    flex: none}
+
+.big-box,
+.mini-box {
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    margin: 2px;}
+    /* font-size: 1em;} */
+
+.mini-box-2 {
+    background-color: #212529;
+    color: #ffffff;
+    text-align: center;
+    margin: 2px;}
+    /* font-size: .75em;} */
+
+/* }
+.big-box {
+    height: 79px;
+    line-height: 65px;
+}
+.mini-box,
+.mini-box-2 {
+    height: 45px;
+    line-height: 30px;
+}
+
+.blank-box {
+    height: 45px;
+    line-height: 30px;
+}
+
+

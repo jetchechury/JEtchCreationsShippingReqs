@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <title>J. Etch Creations</title>
+</head>
+
+<body>
+  <div class="se-pre-con"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col" align="center">
+          <a href="https://www.jetchcreations.com"><img src="https://www.jetchcreations.com/uploads/1/2/0/5/120555287/asset-3-300x_orig.png" style="width:200px"></a>
+         <h3 style="text-align:center";"color:#ee2a7b">J. Etch Order Time Calculator</h3>
+        <h4 style="text-align:center">Select the date you will place your order, enter your shipping zip code, and then click submit.</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col" align="center">
+            <p><br></p>
+          <form method="POST" action="/">
+
+            <div class="form-group">
+              <!-- Order Date input -->
+              <label class="control-label" for="date">Order Date</label>
+              <input class="form-control" id="date" name="orderDate" placeholder="MM/DD/YYYY" type="text" />
+            </div>
+            <div class="form-group">
+              <!-- Event Date input -->
+              <label class="control-label" for="date">Event Date</label>
+              <input class="form-control" id="date" name="eventDate" placeholder="MM/DD/YYYY" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Destination Zip Code</label>
+              <input type="text" name="zipCode" class="form-control" id="InputZipCode" aria-describedby="emailHelp"
+                placeholder="Enter your zip code">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </form>
+        </div>
+
+        <!--<div class="col-8">-->
+        <!--    <p><br></p>-->
+        <!--    <h5 style="font-size:3vw">Order Date: {{ inputDate }}<br>-->
+        <!--    Event Date: {{ eventDate }}<br>-->
+        <!--    Destination: {{ destCity }} {{ destState }} {{ destZIP }}<br><br></h5>-->
+
+            <!--<h2>Your Options</h2><br>-->
+            <!--<p>Based on the information you provided, one of the following processing and shipping combinations recommended to ensure the delivery of your order in time for your event:</p>-->
+            <!--<ul class="fa-ul">-->
+            <!--  <li>{{ recommendation1 }}</li>-->
+            <!--  <li>{{ recommendation2 }}</li>-->
+            <!--  <li>{{ recommendation3 }}</li>-->
+            <!--  <li>{{ recommendation4 }}</li>-->
+            <!--  <li>{{ recommendation5 }}</li>-->
+              <!--<li>{{ recommendation6 }}</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <div class="row" align="center">
+        <p><br>DISCLAIMER: Failure to enter the correct information in the form above could result in inaccurate information. "Ready to Ship" dates are guaranteed, however the only guaranteed mail delivery service is Priority Mail Express.  USPS does not guarantee delivery dates/windows for Priority Mail or First Class Mail.</p>
+        <br>
+        <p style="font-size:130%;"><bold>Below are you shipping recommendations for an order placed on <span style="color:#ee2a7b;text-transform:capitalize;">{{ inputDate }}</span> delivered to <span style="color:#ee2a7b">{{ destCity }} {{ destState }} {{ destZIP }}</span> for your event on <span style="color:#ee2a7b;text-transform:capitalize;">{{ eventDate }}</span></bold><br>
+        <br></p>
+        <h4 style="color:#0085a2">Standard Order Processing</h4>
+        <table class="table table-striped table-bordered table-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th style="width: 25%" scope="col"></th>
+                <th style="text-align:center" scope="col">Ready to Ship</th>
+                <th style="text-align:center" scope="col">Estimated Delivery Window</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="text-align:right" scope="row">{{ fcstdRowHeader }}<br>
+                <p style="font-weight:normal">{{ fcstdRowHeader2 }}</p>
+                </th>
+                <td style="text-align:center">{{ shipDateStd }}</td>
+                <td style="text-align:center">{{ firstClassMinDateStd }} - {{ firstClassMaxDateStd }}</td>
+              </tr>
+              <tr>
+                <th style="text-align:right" scope="row">{{ pmstdRowHeader }}<br>
+                <p style="font-weight:normal">{{ pmstdRowHeader2 }}</p>
+                </th>
+                <td style="text-align:center">{{ shipDateStd }}</td>
+                <td style="text-align:center">{{ priorityDateStd }}</td>
+              </tr>
+              <tr>
+                <th style="text-align:right" scope="row">{{ pmeRowHeader }}<br>
+                <p style="font-weight:normal">{{ pmeRowHeader2 }}</p>
+                </th>
+                <td style="text-align:center">{{ shipDateStd }}</td>
+                <td style="text-align:center">{{ priorityExpDateStd }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4 style="color:#0085a2">Rush Order Processing</h4>
+          <table class="table table-striped table-bordered table-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th style="width: 25%" scope="col"></th>
+                <th style="text-align:center" scope="col">Ready to Ship</th>
+                <th style="text-align:center" scope="col">Estimated Delivery Window</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="text-align:right" scope="row">{{ fcrushRowHeader }}<br>
+                <p style="font-weight:normal">{{ fcrushRowHeader2 }}</p>
+                </th>
+                <td style="text-align:center">{{ shipDateRush }}</td>
+                <td style="text-align:center">{{ firstClassMinDateRush }} - {{ firstClassMaxDateRush }}</td>
+              </tr>
+              <tr>
+                <th style="text-align:right" scope="row">{{ pmrRowHeader }}<br>
+                <p style="font-weight:normal">{{ pmrRowHeader2 }}</p>
+                </th>
+                <td style="text-align:center">{{ shipDateRush }}</td>
+                <td style="text-align:center">{{ priorityDateRush }}</td>
+              </tr>
+              <tr>
+                <th style="text-align:right" scope="row">{{ pmerRowHeader }}<br>
+                <p style="font-weight:normal">{{ pmerRowHeader2 }}</p>
+                </th>
+                <td style="text-align:center">{{ shipDateRush }}</td>
+                <td style="text-align:center">{{ priorityExpDateRush }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>*USPS guaranteed mail service<br>
+          **Most orders where free shipping is applicable will be shipped via USPS First Class Mail.</p>
+    </div>
+    <!--<div class="row" align="center">-->
+    <!--    <div class="col" style:"width:25%" align="center"></div>-->
+    <!--    <div class="col" align="center">-->
+    <!--        <a href="https://www.jetchcreations.com" class="btn btn-primary btn-dark active" role="button" aria-pressed="true">Home</a>-->
+    <!--    </div>-->
+    <!--    <div class="col" align="center">-->
+    <!--        <a href="https://www.jetchcreations.com/shop.html#/" class="btn btn-primary btn-dark active" role="button" aria-pressed="true">Shop</a>-->
+    <!--    </div>-->
+    <!--    <div class="col" align="center">-->
+    <!--        <a href="https://www.jetchcreations.com/store/checkout?cart=#/cart" class="btn btn-primary btn-dark active" role="button" aria-pressed="true">Cart</a>-->
+    <!--    </div>-->
+    <!--    <div class="col" style:"width:25%" align="center"></div>-->
+    <!--</div>-->
+    <div class="row" align="center"><p></p></div>
+
+    </div>
+  </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      var date_input = $('input[name="eventDate"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      var options = {
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+    $(document).ready(function () {
+      var date_input = $('input[name="orderDate"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      var options = {
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+  </script>
+</body>
+
+</html>

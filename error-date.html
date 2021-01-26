@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <title>J. Etch Creations Shipping Time Calulator</title>
+</head>
+
+<body>
+  <div class="se-pre-con"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+         <h3 style="text-align:center">J. Etch Shipping Calculator</h3>
+        <h4 style="text-align:center">Select the date you will place your order, enter your shipping zip code, and then click submit.</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <p><br></p>
+          <form method="POST" action="/">
+            <div class="form-group">
+              <!-- Date input -->
+              <label class="control-label" for="date">Order Date</label>
+              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Destination Zip Code</label>
+              <input type="text" name="zipCode" class="form-control" id="InputZipCode" aria-describedby="emailHelp"
+                placeholder="Enter your zip code">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </form>
+        </div>
+
+        <div class="col-8">
+            <p><br></p>
+            <h5 style="color:red;text-align:center">ERROR: Order date must not to exceed twenty days from today<br>
+            <br></h5>
+            <p>DISCLAIMER: "Ready to Ship" dates are guaranteed, however the only guaranteed mail delivery service is Priority Mail Express.  USPS does not guarantee delivery dates/windows for Priority Mail or First Class Mail.</p>
+    <!--</div>-->
+    <!--<div class="row">-->
+          <h2>Standard Order Processing</h2>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Ready to Ship</th>
+                <th scope="col">Estimated Delivery Window</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Free Shipping<br>
+                </th>
+                <td>{{ shipDateStd }}</td>
+                <td>{{ firstClassMinDateStd }} - {{ firstClassMaxDateStd }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Priority Mail
+                </th>
+                <td>{{ shipDateStd }}</td>
+                <td>{{ priorityDateStd }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Rush Order Processing</h2>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Ready to Ship</th>
+                <th scope="col">Estimated Delivery Window</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Free Shipping<br>
+                </th>
+                <td>{{ shipDateRush }}</td>
+                <td>{{ firstClassMinDateRush }} - {{ firstClassMaxDateRush }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Priority Mail
+                </th>
+                <td>{{ shipDateRush }}</td>
+                <td>{{ priorityDateRush }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+  </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      var date_input = $('input[name="date"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      var options = {
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+  </script>
+</body>
+
+</html>
